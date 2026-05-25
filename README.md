@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+🛠️ Local Development Setup
+To replicate this environment locally, make sure your workspace is running Node.js (v18 or higher recommended).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Clone the Source File Setup
+   Bash
+   git clone [https://github.com/your-username/hiresphere.git](https://github.com/your-username/hiresphere.git)
+   cd hiresphere
+2. Dependency Setup
+   Execute package installation (This handles compilation layers including specialized dependencies like react-fast-marquee or standard Mantine integrations seamlessly):
 
-Currently, two official plugins are available:
+Bash
+npm install 3. Launch Development Server
+Bash
+npm run dev
+Open your preferred browser and navigate to http://localhost:5173.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+4. Code Compilation & Build
+   To build a fully production-ready, heavily optimized static bundle:
 
-## React Compiler
+Bash
+npm run build
+💡 Important Integration & Troubleshooting Notes
+⚠️ Bundled Dependency Quirks (react-fast-marquee)
+Depending on your bundling engine version context or ESM transition rules, direct CommonJS module imports for external components (like react-fast-marquee) might bundle within standard wrapper wrappers. If you encounter rendering invalidations citing functional component object type errors, utilize safe fallbacks or extract structural targets cleanly within your rendering contexts:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+TypeScript
+import MarqueeImport from "react-fast-marquee";
+const Marquee = (MarqueeImport as any).default || MarqueeImport;
+🎨 Overriding Library Styling Frameworks (Mantine + Tailwind v4)
+When working with native UI controls like @mantine/carousel, bypass explicit global overrides by binding classes directly via the library's descriptive classNames injection parameters, using Tailwind v4's high-priority ! identifier safely:
 
-## Expanding the ESLint configuration
+JavaScript
+<Carousel
+className="group"
+classNames={{
+    control: "bg-bright-sun-400! border-none! opacity-0 group-hover:opacity-100 transition-opacity"
+  }}
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+> {/_ Carousel slides _/}
+> </Carousel>
+> 📄 License
+> Distributed under the MIT License.
