@@ -16,6 +16,7 @@ import ApplyJobPage from "./pages/ApplyJobPage";
 import CompanyPage from "./pages/CompanyPage";
 import PostedJobPage from "./pages/PostedJobPage";
 import JobHistoryPage from "./pages/JobHistoryPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
   const theme = createTheme({
@@ -58,7 +59,8 @@ function App() {
       <BrowserRouter>
         <div className="relative">
           <Header />
-          <Divider size="xs" mx="md" />
+          {location.pathname !== "/signup" &&
+            location.pathname !== "/login" && <Divider size="xs" mx="md" />}
           <Routes>
             <Route path="/find-jobs" element={<FindJobsPage />} />
             <Route path="/find-talent" element={<FindTalentPage />} />
@@ -69,6 +71,8 @@ function App() {
             <Route path="/company" element={<CompanyPage />} />
             <Route path="/posted-job" element={<PostedJobPage />} />
             <Route path="/job-history" element={<JobHistoryPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/login" element={<SignUpPage />} />
             <Route path="*" element={<Home />} />
           </Routes>
           <Footer />
