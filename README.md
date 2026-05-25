@@ -3,8 +3,8 @@ To replicate this environment locally, make sure your workspace is running Node.
 
 1. Clone the Source File Setup
    Bash
-   git clone [https://github.com/your-username/hiresphere.git](https://github.com/your-username/hiresphere.git)
-   cd hiresphere
+   git clone https://github.com/muhammad-ahad-yard/job-hunt-front-end
+   cd job-hunt-front-end
 2. Dependency Setup
    Execute package installation (This handles compilation layers including specialized dependencies like react-fast-marquee or standard Mantine integrations seamlessly):
 
