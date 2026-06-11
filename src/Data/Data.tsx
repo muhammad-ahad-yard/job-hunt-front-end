@@ -672,6 +672,48 @@ const activeJobs = [
   },
 ];
 
+const field = [
+  {
+    label: "Job Title",
+    placeholder: "Enter Job Title",
+    options: [
+      "Designer",
+      "Developer",
+      "Product Manager",
+      "Marketing Specialist",
+      "Data Analyst",
+      "Sales Executive",
+      "Content Writer",
+      "Customer Support",
+    ],
+    value: "Software Engineer",
+    leftSection: IconBriefcase,
+  },
+  {
+    label: "Company",
+    placeholder: "Enter Company Name",
+    options: [
+      "Google",
+      "Microsoft",
+      "Meta",
+      "Netflix",
+      "Adobe",
+      "Amazon",
+      "Apple",
+      "Spotify",
+    ],
+    value: "Google",
+    leftSection: IconBriefcase,
+  },
+  {
+    label: "Location",
+    placeholder: "Enter Location",
+    options: ["Entery Level", "Intermediate", "Expert"],
+    value: "New York, USA",
+    leftSection: IconMapPin,
+  },
+];
+
 export {
   companies,
   jobCategory,
@@ -692,4 +734,5 @@ export {
   similar,
   drafts,
   activeJobs,
+  field,
 };
